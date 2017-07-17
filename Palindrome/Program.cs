@@ -10,6 +10,7 @@ namespace Palindrome
     {
         static void Main(string[] args)
         {
+            List<object> cachedEntries = new List<object>();
             bool canContinue = true;
             while (canContinue)
             {
@@ -18,29 +19,36 @@ namespace Palindrome
                 string reverseText = Reverse(testText);
                 bool isPalindrome = CheckPalindrome(testText, reverseText);
                 DisplayResults(reverseText, isPalindrome);
+                StoreResults(cachedEntries, testText, reverseText, isPalindrome);
                 canContinue = CheckContinue();
             }
         }
 
-        public static string Reverse(string s)
+        static string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
             return new string(charArray);
         }
 
-        public static bool CheckPalindrome(string test, string reverse)
+        static bool CheckPalindrome(string test, string reverse)
         {
             return test == reverse;
         }
 
-        public static void DisplayResults(string reverse, bool palindrome)
+        static void DisplayResults(string reverse, bool palindrome)
         {
             Console.WriteLine($"Reversed: {reverse}");
             Console.WriteLine($"Confirmed Palindrome: {palindrome}");
         }
 
-        public static bool CheckContinue()
+        static void StoreResults(List<object> list, string test, string reverse, bool palindrome)
+        {
+            list.Add(new StoredEntry { UserText = test, ReversedText = reverse, IsPalindrome = palindrome });
+            return;
+        }
+
+        static bool CheckContinue()
         {
             Console.Write("Continue? (Y/N)");
             string response = Console.ReadLine();
