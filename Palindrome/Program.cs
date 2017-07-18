@@ -10,7 +10,7 @@ namespace Palindrome
     {
         static void Main(string[] args)
         {
-            List<object> cachedEntries = new List<object>();
+            List<StoredEntry> cachedEntries = new List<StoredEntry>();
             bool canContinue = true;
             while (canContinue)
             {
@@ -42,7 +42,7 @@ namespace Palindrome
             Console.WriteLine($"Confirmed Palindrome: {palindrome}");
         }
 
-        static void StoreResults(List<object> list, string test, string reverse, bool palindrome)
+        static void StoreResults(List<StoredEntry> list, string test, string reverse, bool palindrome)
         {
             list.Add(new StoredEntry { UserText = test, ReversedText = reverse, IsPalindrome = palindrome });
             return;
