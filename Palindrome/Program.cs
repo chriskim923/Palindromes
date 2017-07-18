@@ -10,7 +10,7 @@ namespace Palindrome
     {
         static void Main(string[] args)
         {
-            List<StoredEntry> cachedEntries = new List<StoredEntry>();
+            List<StoredEntry> EntryList = new List<StoredEntry>();
             bool canContinue = true;
             while (canContinue)
             {
@@ -19,7 +19,7 @@ namespace Palindrome
                 string reverseText = Reverse(testText);
                 bool isPalindrome = CheckPalindrome(testText, reverseText);
                 DisplayResults(reverseText, isPalindrome);
-                StoreResults(cachedEntries, testText, reverseText, isPalindrome);
+                StoreResults(EntryList, testText, reverseText, isPalindrome);
                 canContinue = CheckContinue();
             }
         }
