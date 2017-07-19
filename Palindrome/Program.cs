@@ -1,69 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Palindrome
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            List<StoredEntry> EntryList = new List<StoredEntry>();
+            List<PalindromeObject> EntryList = new List<PalindromeObject>();
+            PalindromeObject currentTest;
             bool canContinue = true;
             while (canContinue)
             {
                 Console.Write("Enter string: ");
-                string testText = Console.ReadLine();
-                string reverseText = Reverse(testText);
-                bool isPalindrome = CheckPalindrome(testText, reverseText);
-                DisplayResults(reverseText, isPalindrome);
-                StoreResults(EntryList, testText, reverseText, isPalindrome);
+                string testString = Console.ReadLine();
+                currentTest = new PalindromeObject(testString);
+                EntryList.Add(currentTest);
+                DisplayResults(currentTest);
                 canContinue = CheckContinue();
             }
         }
 
-        static string Reverse(string s)
+        static void DisplayResults(PalindromeObject testObject)
         {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
+            Console.WriteLine($"Original: {testObject.testString}");
+            Console.WriteLine($"Reversed: {testObject.reversedString}");
+            Console.WriteLine($"Confirmed Palindrome: {testObject.isPalindrome}");
         }
 
-        static bool CheckPalindrome(string test, string reverse)
+        public static bool CheckContinue()
         {
-            return test == reverse;
-        }
-
-        static void DisplayResults(string reverse, bool palindrome)
-        {
-            Console.WriteLine($"Reversed: {reverse}");
-            Console.WriteLine($"Confirmed Palindrome: {palindrome}");
-        }
-
-        static void StoreResults(List<StoredEntry> list, string test, string reverse, bool palindrome)
-        {
-            list.Add(new StoredEntry { UserText = test, ReversedText = reverse, IsPalindrome = palindrome });
-            return;
-        }
-
-        static bool CheckContinue()
-        {
-            Console.Write("Continue? (Y/N)");
-            string response = Console.ReadLine();
-            if (String.Equals(response, "y", StringComparison.CurrentCultureIgnoreCase))
+            var yesList = new List<string> { "y", "yes" };
+            var noList = new List<string> { "n", "no" };
+            while (true)
             {
-                return true;
-            }
-            else if (String.Equals(response, "n", StringComparison.CurrentCultureIgnoreCase))
-            {
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Please enter a valid option");
-                return CheckContinue();
+                Console.Write("Continue? (Y/N)");
+                string response = Console.ReadLine();
+                if (yesList.Contains(response, StringComparer.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+                else if (noList.Contains(response, StringComparer.OrdinalIgnoreCase))
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid option");
+                }
             }
         }
     }
