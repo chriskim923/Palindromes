@@ -52,7 +52,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="PalindromeObjectTests.cs" />
-    <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

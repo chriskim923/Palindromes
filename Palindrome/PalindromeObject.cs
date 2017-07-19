@@ -31,8 +31,6 @@ namespace Palindrome
         {
             string formattedTestText = Regex.Replace(testString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
             string formattedReverseText = Regex.Replace(reversedString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
-            Console.WriteLine(formattedTestText);
-            Console.WriteLine(formattedReverseText);
             isPalindrome = string.Equals(formattedTestText, formattedReverseText, StringComparison.CurrentCultureIgnoreCase);
         }
     }

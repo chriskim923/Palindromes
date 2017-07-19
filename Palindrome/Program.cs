@@ -13,15 +13,13 @@ namespace Palindrome
         {
             List<PalindromeObject> EntryList = new List<PalindromeObject>();
             PalindromeObject currentTest;
-            bool canContinue = true;
-            while (canContinue)
+            while (true)
             {
                 Console.Write("Enter string: ");
                 string testString = Console.ReadLine();
                 currentTest = new PalindromeObject(testString);
                 EntryList.Add(currentTest);
                 DisplayResults(currentTest);
-                canContinue = CheckContinue();
             }
         }
 
@@ -30,29 +28,6 @@ namespace Palindrome
             Console.WriteLine($"Original: {testObject.testString}");
             Console.WriteLine($"Reversed: {testObject.reversedString}");
             Console.WriteLine($"Confirmed Palindrome: {testObject.isPalindrome}");
-        }
-
-        public static bool CheckContinue()
-        {
-            var yesList = new List<string> { "y", "yes" };
-            var noList = new List<string> { "n", "no" };
-            while (true)
-            {
-                Console.Write("Continue? (Y/N)");
-                string response = Console.ReadLine();
-                if (yesList.Contains(response, StringComparer.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-                else if (noList.Contains(response, StringComparer.OrdinalIgnoreCase))
-                {
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid option");
-                }
-            }
         }
     }
 }
