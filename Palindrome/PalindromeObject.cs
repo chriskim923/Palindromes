@@ -17,7 +17,9 @@ namespace Palindrome
         {
             testString = str;
             Reverse();
-            CheckPalindrome();
+            isPalindrome = true;
+            string formattedTestString = FormatString(testString);
+            CheckPalindrome(formattedTestString);
         }
 
         public void Reverse()
@@ -27,11 +29,26 @@ namespace Palindrome
             reversedString = new string(charArray);
         }
 
-        public void CheckPalindrome()
+        public string FormatString(string unformattedString)
         {
-            string formattedTestText = Regex.Replace(testString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
-            string formattedReverseText = Regex.Replace(reversedString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
-            isPalindrome = string.Equals(formattedTestText, formattedReverseText, StringComparison.CurrentCultureIgnoreCase);
+            string formattedString = Regex.Replace(unformattedString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
+            return formattedString;
+        }
+
+        public void CheckPalindrome(string formattedString)
+        {
+            // isPalindrome = string.Equals(formattedTestText, formattedReverseText, StringComparison.CurrentCultureIgnoreCase);
+            // Alternative function
+            int stringLength = formattedString.Length;
+            int iterations = (stringLength - stringLength % 2) / 2;
+            for (int i = 0; i < iterations; i++)
+            {
+                if (formattedString[i] != formattedString[stringLength - i - 1])
+                {
+                    isPalindrome = false;
+                    break;
+                }
+            }
         }
     }
 }
