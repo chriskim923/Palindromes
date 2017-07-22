@@ -12,20 +12,29 @@ namespace Palindrome.Tests
     public class PalindromeObjectTests
     {
         [TestMethod()]
-        public void ReverseTest()
+        public void ReverseStringTest()
         {
             PalindromeObject Test = new PalindromeObject("Taco-cat?");
             string expectedString = "?tac-ocaT";
-            string actualString = Test.reversedString;
+            string actualString = Test.ReversedString;
             Assert.AreEqual<string>(expectedString, actualString);
         }
 
         [TestMethod()]
-        public void CheckPalindromeTest()
+        public void FormatStringTest()
+        {
+            var stringWithSpecialChars = "Test ,-':.?!()";
+            var stringWithoutSpecialChars = "Test";
+            var formattedString = PalindromeObject.FormatString(stringWithSpecialChars);
+            Assert.AreEqual<string>(stringWithoutSpecialChars, formattedString);
+        }
+        [TestMethod()]
+
+        public void IsStringPalindromeTest()
         {
             PalindromeObject trueTest = new PalindromeObject("Dammit! I'm mad");
             PalindromeObject falseTest = new PalindromeObject("Fail Test");
-            Assert.IsTrue(trueTest.isPalindrome && !falseTest.isPalindrome);
+            Assert.IsTrue(trueTest.IsPalindrome && !falseTest.IsPalindrome);
         }
     }
 }

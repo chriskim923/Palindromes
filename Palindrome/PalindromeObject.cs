@@ -9,46 +9,44 @@ namespace Palindrome
 {
     public class PalindromeObject
     {
-        public string testString;
-        public string reversedString;
-        public bool isPalindrome;
+        public string TestString { get; }
+        public string ReversedString;
+        public bool IsPalindrome;
 
         public PalindromeObject(string str)
         {
-            testString = str;
-            Reverse();
-            isPalindrome = true;
-            string formattedTestString = FormatString(testString);
-            CheckPalindrome(formattedTestString);
+            this.TestString = str;
+            this.ReversedString = ReverseString(TestString);
+            this.IsPalindrome = IsStringPalindrome(TestString);
         }
 
-        public void Reverse()
+        public static string ReverseString(string TestString)
         {
-            char[] charArray = testString.ToCharArray();
+            char[] charArray = TestString.ToCharArray();
             Array.Reverse(charArray);
-            reversedString = new string(charArray);
+            return new string(charArray);
         }
 
-        public string FormatString(string unformattedString)
+        public static string FormatString(string unformattedString)
         {
-            string formattedString = Regex.Replace(unformattedString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
+            string filteredString = Regex.Replace(unformattedString, @"\s+|,|-|'|:|\.|\?|\!|\(|\)|", "");
+            string formattedString = filteredString.ToLower();
             return formattedString;
         }
 
-        public void CheckPalindrome(string formattedString)
+        public static bool IsStringPalindrome(string TestString)
         {
-            // isPalindrome = string.Equals(formattedTestText, formattedReverseText, StringComparison.CurrentCultureIgnoreCase);
-            // Alternative function
+            string formattedString = FormatString(TestString);
             int stringLength = formattedString.Length;
             int iterations = (stringLength - stringLength % 2) / 2;
             for (int i = 0; i < iterations; i++)
             {
                 if (formattedString[i] != formattedString[stringLength - i - 1])
                 {
-                    isPalindrome = false;
-                    break;
+                    return false;
                 }
             }
+            return true;
         }
     }
 }
