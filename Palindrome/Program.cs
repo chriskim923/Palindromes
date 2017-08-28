@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palindrome
+namespace PalindromeChecker
 {
     public class Program
     {
@@ -17,24 +17,19 @@ namespace Palindrome
             //str.Append('x', 1000000);
             //string s = str.ToString();
 
-            List<PalindromeObject> EntryList = new List<PalindromeObject>();
-            PalindromeObject currentTest;
+            List<PalindromeData> EntryList = new List<PalindromeData>();
+            PalindromeData currentTest;
             while (true)
             {
                 Console.Write("Enter string: ");
                 string testString = Console.ReadLine();
                 //string testString = s;
-                currentTest = new PalindromeObject(testString);
+                currentTest = new PalindromeData(testString);
                 EntryList.Add(currentTest);
-                DisplayResults(currentTest);
+                PrintResults.DisplayResults(currentTest);
             }
         }
 
-        static void DisplayResults(PalindromeObject testObject)
-        {
-            Console.WriteLine($"Original: {testObject.TestString}");
-            Console.WriteLine($"Reversed: {testObject.ReversedString}");
-            Console.WriteLine($"Confirmed Palindrome: {testObject.IsPalindrome}");
-        }
+        
     }
 }

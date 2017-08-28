@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Palindrome;
+using PalindromeChecker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palindrome.Tests
+namespace PalindromeChecker.Tests
 {
     [TestClass()]
     public class PalindromeObjectTests
@@ -14,26 +14,27 @@ namespace Palindrome.Tests
         [TestMethod()]
         public void ReverseStringTest()
         {
-            PalindromeObject Test = new PalindromeObject("Taco-cat?");
-            string expectedString = "?tac-ocaT";
-            string actualString = Test.ReversedString;
+            PalindromeData TestPalindrome = new PalindromeData("Taco-cat?");
+            var expectedString = "?tac-ocaT";
+            var actualString = TestPalindrome.ReversedString;
             Assert.AreEqual<string>(expectedString, actualString);
         }
 
         [TestMethod()]
-        public void FormatStringTest()
+        public void FormatPalindromeStringTest()
         {
-            var stringWithSpecialChars = "Test ,-':.?!()";
-            var stringWithoutSpecialChars = "Test";
-            var formattedString = PalindromeObject.FormatString(stringWithSpecialChars);
-            Assert.AreEqual<string>(stringWithoutSpecialChars, formattedString);
+            Palindrome TestPalindrome = new Palindrome();
+            var unformatted = "Test ,-':.?!() passed";
+            var expectedString = "testpassed";
+            var formattedString = TestPalindrome.FormatPalindromeString(unformatted);
+            Assert.AreEqual<string>(formattedString, expectedString);
         }
-        [TestMethod()]
 
+        [TestMethod()]
         public void IsStringPalindromeTest()
         {
-            PalindromeObject trueTest = new PalindromeObject("Dammit! I'm mad");
-            PalindromeObject falseTest = new PalindromeObject("Fail Test");
+            var trueTest = new PalindromeData("Dammit! I'm mad");
+            var falseTest = new PalindromeData("Fail Test");
             Assert.IsTrue(trueTest.IsPalindrome && !falseTest.IsPalindrome);
         }
     }

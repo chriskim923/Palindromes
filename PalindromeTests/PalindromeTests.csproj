@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Palindrome\Palindrome.csproj">
+    <ProjectReference Include="..\Palindrome\PalindromeChecker.csproj">
       <Project>{6638020D-1C19-47FC-B914-442B31326D98}</Project>
-      <Name>Palindrome</Name>
+      <Name>PalindromeChecker</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
