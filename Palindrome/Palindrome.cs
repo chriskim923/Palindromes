@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace PalindromeChecker
+namespace PalindromeProject
 {
     public class Palindrome
     {

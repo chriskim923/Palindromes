@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PalindromeChecker
+namespace PalindromeProject
 {
     public class Program
     {
@@ -21,12 +21,26 @@ namespace PalindromeChecker
             PalindromeData currentTest;
             while (true)
             {
-                Console.Write("Enter string: ");
-                string testString = Console.ReadLine();
-                //string testString = s;
-                currentTest = new PalindromeData(testString);
-                EntryList.Add(currentTest);
-                PrintResults.DisplayResults(currentTest);
+                Console.Write("Please select an option: \n\t1 - Enter string \n\t2 - View Cached Results \nOption: ");
+                var option = Console.ReadLine();
+                switch(option)
+                {
+                    case "1":
+                        Console.Write("Enter string: ");
+                        string testString = Console.ReadLine();
+                        //string testString = s;
+                        currentTest = new PalindromeData(testString);
+                        EntryList.Add(currentTest);
+                        Display.PrintResults(currentTest);
+                        break;
+                    case "2":
+                        Display.PrintCache(EntryList);
+                        break;
+                    default:
+                        Console.WriteLine($"'{option}' is not a valid option");
+                        break;
+                }
+                
             }
         }
 

@@ -4,15 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PalindromeChecker
+namespace PalindromeProject
 {
-    class PrintResults
+    class Display
     {
-        public static void DisplayResults(PalindromeData testObject)
+        private static string sectionBorderDashes = new string('-', 25);
+
+        public static void PrintResults(PalindromeData testObject)
         {
-            Console.WriteLine($"Original: {testObject.TestString}");
-            Console.WriteLine($"Reversed: {testObject.ReversedString}");
-            Console.WriteLine($"Confirmed Palindrome: {testObject.IsPalindrome}");
+            Console.WriteLine($"{sectionBorderDashes}" +
+            $"\nIsPalindrome: {testObject.IsPalindrome}" +
+            $"\n\tOriginal: {testObject.TestString}" +
+            $"\n\tReversed: {testObject.ReversedString}" +
+            $"\n{sectionBorderDashes}");
+        }
+        public static void PrintCache(List<PalindromeData> entryList)
+        {
+            List<PalindromeData> sortedList = entryList.OrderByDescending(obj => obj.IsPalindrome).ToList();
+            Console.WriteLine(sectionBorderDashes);
+            Console.WriteLine("IsPalindrome: Original String | Reversed String");
+            foreach (PalindromeData entry in sortedList)
+            {
+                Console.WriteLine($"{entry.IsPalindrome}: {entry.TestString} -> {entry.ReversedString}");
+            }
+            Console.WriteLine(sectionBorderDashes);
         }
     }
 }

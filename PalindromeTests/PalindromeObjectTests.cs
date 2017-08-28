@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PalindromeChecker;
+using PalindromeProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PalindromeChecker.Tests
+namespace PalindromeProject.Tests
 {
     [TestClass()]
     public class PalindromeObjectTests
