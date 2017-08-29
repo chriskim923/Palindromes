@@ -17,7 +17,7 @@ namespace PalindromeProject
 
         public string FormatPalindromeString(string unformattedString)
         {
-            var filteredString = Regex.Replace(unformattedString, @"[^a-zA-Z]+", "");
+            var filteredString = Regex.Replace(unformattedString, @"[^0-9a-zA-Z]+", "");
             string formattedString = filteredString.ToLower();
             return formattedString;
         }
