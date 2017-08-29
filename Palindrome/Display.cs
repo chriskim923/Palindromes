@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PalindromeProject
 {
-    class Display
+    public class Display
     {
         private static string sectionBorderDashes = new string('-', 25);
 

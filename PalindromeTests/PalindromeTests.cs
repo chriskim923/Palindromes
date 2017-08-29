@@ -1,21 +1,24 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PalindromeProject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PalindromeProject.Tests
 {
     [TestClass()]
-    public class PalindromeObjectTests
+    public class PalindromeTests
     {
         [TestMethod()]
-        public void ReverseStringTest()
+        public void ReverseStringTest1()
         {
-            PalindromeData TestPalindrome = new PalindromeData("Taco-cat?");
-            var expectedString = "?tac-ocaT";
+            PalindromeData TestPalindrome = new PalindromeData("Taco-cat");
+            var expectedString = "tac-ocaT";
+            var actualString = TestPalindrome.ReversedString;
+            Assert.AreEqual<string>(expectedString, actualString);
+        }
+
+        [TestMethod()]
+        public void ReverseStringTest2()
+        {
+            PalindromeData TestPalindrome = new PalindromeData("Hello World");
+            var expectedString = "dlroW olleH";
             var actualString = TestPalindrome.ReversedString;
             Assert.AreEqual<string>(expectedString, actualString);
         }
@@ -31,11 +34,17 @@ namespace PalindromeProject.Tests
         }
 
         [TestMethod()]
-        public void IsStringPalindromeTest()
+        public void IsStringPalindromeTest1()
         {
             var trueTest = new PalindromeData("Dammit! I'm mad");
+            Assert.IsTrue(trueTest.IsPalindrome);
+        }
+
+        [TestMethod()]
+        public void IsStringPalindromeTest2()
+        {
             var falseTest = new PalindromeData("Fail Test");
-            Assert.IsTrue(trueTest.IsPalindrome && !falseTest.IsPalindrome);
+            Assert.IsTrue(!falseTest.IsPalindrome);
         }
     }
 }

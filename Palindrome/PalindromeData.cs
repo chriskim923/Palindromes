@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PalindromeProject
+﻿namespace PalindromeProject
 {
     public class PalindromeData : Palindrome
     {
@@ -13,11 +6,11 @@ namespace PalindromeProject
         public string ReversedString { get; }
         public bool IsPalindrome { get; }
 
-        public PalindromeData(string str)
+        public PalindromeData(string testString)
         {
-            this.TestString = str;
-            this.ReversedString = base.ReverseString(TestString);
-            this.IsPalindrome = base.IsStringPalindrome(TestString);
+            this.TestString = testString;
+            this.ReversedString = base.ReverseString(testString);
+            this.IsPalindrome = base.IsStringPalindrome(testString);
         }
     }
 }

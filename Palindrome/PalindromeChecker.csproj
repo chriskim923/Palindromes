@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Palindrome.cs" />
     <Compile Include="PalindromeData.cs" />
-    <Compile Include="PrintResults.cs" />
+    <Compile Include="Display.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

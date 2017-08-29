@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace PalindromeProject
 {
@@ -8,7 +7,6 @@ namespace PalindromeProject
         public string ReverseString(string testString)
         {
             char[] reversedChars = new char[testString.Length];
-
             for (int i = 0, j = testString.Length - 1; i <= j; i++, j--)
             {
                 reversedChars[i] = testString[j];
@@ -27,14 +25,9 @@ namespace PalindromeProject
         public bool IsStringPalindrome(string testString)
         {
             string formattedString = FormatPalindromeString(testString);
-            
             for (int i = 0, j = formattedString.Length - 1; i <= j; i++, j--)
-            {
                 if (formattedString[i] != formattedString[j])
-                {
                     return false;
-                }
-            }
             return true;
         }
     }
